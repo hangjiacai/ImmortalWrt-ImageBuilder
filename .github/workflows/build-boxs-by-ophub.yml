@@ -228,7 +228,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
@@ -238,7 +238,7 @@ jobs:
 
       - name: Debug workspace contents
         run: ls -R
-      
+        
       - name: Enable Store integration
         run: |
           if [ "${{ github.event.inputs.enable_store }}" == "true" ]; then
@@ -253,7 +253,7 @@ jobs:
         run: |
           # 使用ImageBuilder构建 且用户勾选了替换banner时
           cp n1/99-banner.sh files/etc/uci-defaults/
-      
+        
       - name: Build Rootfs for Radxa and Other Boards (ImmortalWrt)
         if: ${{ github.event.inputs.skip_imagebuilder != 'true' }}
         run: |
